@@ -9,22 +9,6 @@ class CafeMenuApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Cafe Menu',
       home: Scaffold(
-        appBar: AppBar(
-          leading: Builder(
-            builder: (context) => IconButton(
-              icon: Icon(Icons.menu), // Ikon burger
-              onPressed: () {
-                Scaffold.of(context).openDrawer(); // Membuka drawer
-              },
-            ),
-          ),
-          title: Text(
-            'Menu Cafe Hari Ini :)',
-            style: TextStyle(color: Colors.white),
-          ),
-          centerTitle: true,
-          backgroundColor: Color(0xFF8D6E63), // warna background
-        ),
         body: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
@@ -38,40 +22,22 @@ class CafeMenuApp extends StatelessWidget {
           ),
           child: SafeArea(child: MenuGrid()),
         ),
-        drawer: Drawer(
-          child: ListView(
-            padding: EdgeInsets.zero,
-            children: <Widget>[
-              DrawerHeader(
-                decoration: BoxDecoration(
-                  color: Color(0xFF8D6E63),
-                ),
-                child: Text(
-                  'Menu',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 24,
-                  ),
-                ),
-              ),
-              ListTile(
-                title: Text('Drink'),
-                onTap: () {
-                  Navigator.pop(context); // Menutup drawer
-                },
-              ),
-              ListTile(
-                title: Text('Food'),
-                onTap: () {
-                  Navigator.pop(context); // Menutup drawer
-                },
-              ),
-              // Tambahkan lebih banyak item sesuai kebutuhan
-            ],
-          ),
-        ),
-      ),
-    );
+        appBar: AppBar(
+  leading: IconButton(
+    icon: Icon(Icons.chevron_left), // Ikon panah kembali
+    onPressed: () {
+      Navigator.of(context).pop();
+    },
+  ),
+  title: Text(
+    'Menu Cafe Hari Ini :)',
+    style: TextStyle(color: Colors.white), // Set text color to white
+  ),
+  centerTitle: true,
+  backgroundColor: Color(0xFF8D6E63), // warna background
+  ),
+  ),
+  );
   }
 }
 
@@ -203,6 +169,7 @@ class MenuGrid extends StatelessWidget {
                       Icon(Icons.bookmark_border, size: 19),
                     ],
                   ),
+                  
                 ],
               ),
             ),
